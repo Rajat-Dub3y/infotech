@@ -1,0 +1,279 @@
+/* Basic reset */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, system-ui, Arial; color: #111; }
+
+/* ---------- HEADER ---------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 100px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.logo-container { display: flex; gap: 12px; align-items: center; }
+.logo-container img { height: 70px; width: auto; display: block; }
+.company-info h1 { font-size: 30px; margin: 0; }
+.company-info h4 { margin: 0; font-size: 20px; color: #666; font-weight: 400; }
+nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; align-items: center; }
+nav ul li { cursor: pointer; font-size: 20px; }
+.cta-btn {
+  background: #e63946; color: white; border: none; padding: 10px 16px; border-radius: 25px;
+  cursor: pointer; font-size: 20px;
+}
+
+/* ---------- HERO ---------- */
+/* full pink background for hero section */
+.hero {
+  /* linear background instead of solid pink */
+  background: linear-gradient(180deg, #FFE7EB 0%, #FFBFCA 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 72px 20px 0 20px; /* remove bottom padding so image sits flush */
+  min-height: 600px; /* ensures tall enough hero */
+}
+
+/* 50/50 grid columns for equal halves */
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;   /* text stays centered */
+  gap: 32px;
+  height: 100%;
+}
+
+/* left column (text) */
+.hero-left { padding-right: 20px;justify-items:center; z-index: 10; }
+.hero-left h1 {
+  font-size: clamp(32px, 4.5vw, 65px);
+  line-height: 1.1;
+  margin: 0 0 18px 0;
+  color: #111;
+  max-width: 620px; /* keeps text width like Figma */
+}
+.hero-left p { margin: 0 0 22px 0; color: #222; font-size: 15px; line-height: 1.6;font:figtree }
+.hero-buttons { display: flex; gap: 16px; }
+.outline-btn {
+  padding: 10px 18px; border-radius: 24px; border: 2px solid #e63946; background: white; color: #e63946;
+  cursor: pointer;
+}
+.underline-highlight {
+  color: #e63946; 
+  text-decoration-thickness: 3px; 
+  text-underline-offset: 6px; 
+  position: relative;
+  z-index: 1;  
+  position: relative;
+  display: inline-block;
+
+}
+
+.underline-highlight::before,
+.underline-highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 12px;   /* adjust based on SVG height */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  pointer-events: none;
+}
+
+.underline-highlight::before {
+  bottom: -8px; /* adjust vertical position */
+  background-image: url("public/V1.svg");
+}
+
+.underline-highlight::after {
+  bottom: -16px; /* slightly lower than the first */
+  background-image: url("public/V2.svg");
+}
+
+
+/* right column (image + rings + cards) */
+
+.hero-right {
+  display: flex;
+  align-items: flex-end;  /* push image down */
+  justify-content: right;
+  position: relative;
+}
+
+.hero-image-wrap {
+  position: relative;
+  width: min(700px, 46vw);
+  max-width: 740px;
+  display: flex;
+  justify-content:center;
+  align-items: flex-end;
+}
+
+/* outer and inner rings behind image to match Figma radial fills */
+.ring-outer {
+  position: absolute;
+  width: 90%;   /* smaller than before */
+  height: 85%;  /* only cover 3/4 */
+  bottom: 0;    /* touch bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #FFE4E9 0%, #FFCBD4 70%, rgba(255,203,212,0) 100%);
+  z-index: 1;
+}
+
+.ring-inner {
+  position: absolute;
+  width: 70%;
+  height: 75%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #FECDD5 0%, #FFE2E7 80%, rgba(255,226,231,0) 100%);
+  z-index: 2;
+}
+
+.main-hero-img {
+  position: relative;
+  z-index: 3;
+  width: 85%;
+  max-width: 420px;
+}
+
+/* Floating rating card */
+.rating-box {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+  position: absolute;
+  top: 62%;
+  left: 2%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(16,24,40,0.08);
+  z-index: 4;
+  text-align: center;
+  min-width: 120px;
+}
+
+.rating-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+.rating-box p { margin: 4px 0 0 0; font-size: 12px; color: #555; }
+
+.rating-score {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2b8a7a;
+}
+
+.rating-info {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start; /* stars and text left-aligned */
+}
+
+.stars {
+  font-size: 0.8rem;
+  color: #f5b301; /* golden star color */
+}
+
+.rating-text {
+  font-weight:bold;
+  font-size: 1rem;
+  color: #666;
+}
+
+
+
+/* Floating resume stats card */
+.resume-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 6%;
+  right: -10%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 24px rgba(16,24,40,0.08);
+  z-index: 4;
+  text-align: center;
+  min-width: 120px;
+}
+
+.resume-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left:20px;
+  text-align: left;
+}
+
+.resume-img img {
+  width: 80px; /* adjust size */
+  height: auto;
+}
+
+.resume-count {
+  display: block;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.resume-box p {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: #555;
+}
+
+/* ---------- FEATURES ---------- */
+.features { padding: 60px 20px; background: #fff; text-align: center; }
+.features-subtitle { display:inline-block; background:#ffd9e0; color:#e63946; padding:6px 14px; border-radius:20px; margin-bottom:14px; }
+.features-title { margin: 10px 0 40px 0; font-size: 26px; }
+.features-cards { display:flex; gap:22px; justify-content: center; flex-wrap:wrap; }
+.feature-card {
+  background: #fff; width: 240px; padding: 20px; border-radius:12px; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  text-align:left;
+}
+.feature-card img {
+  width: 100px;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px; /* center the icon */
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1000px) {
+  .hero-inner { gap: 22px; }
+  .hero-image-wrap { width: min(460px, 46vw); }
+  .ring-outer { width: 115%; height: 115%; }
+  .ring-inner { width: 80%; height: 80%; }
+  .resume-box { right: 2%; bottom: -2%; }
+}
+
+@media (max-width: 720px) {
+  nav ul { display: none; } /* simple collapse for mobile - add hamburger if needed */
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  /* show image above text on mobile */
+  .hero-left { order: 2; text-align: center; padding: 0 12px; }
+  .hero-right { order: 1; margin-bottom: 8px; }
+  .hero-image-wrap { width: min(360px, 72vw); }
+  .ring-outer { width: 160%; height: 160%; top: 40%; }
+  .ring-inner { width: 96%; height: 96%; top: 40%; }
+  .rating-box { top: -4%; left: 50%; transform: translate(-50%, 0); }
+  .resume-box { bottom: -10%; right: 50%; transform: translate(50%, 0); }
+}
