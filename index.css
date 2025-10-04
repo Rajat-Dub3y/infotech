@@ -64,6 +64,7 @@ nav ul li { cursor: pointer; font-size: 20px; }
   text-decoration-thickness: 3px; 
   text-underline-offset: 6px; 
   position: relative;
+  padding-bottom:10px;
   z-index: 1;  
   position: relative;
   display: inline-block;
